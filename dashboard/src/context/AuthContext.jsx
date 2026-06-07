@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect, useCallback } fr
 
 const AuthContext = createContext(null);
 
-const API = import.meta.env.PROD ? 'https://dog-grooming-module-apms.vercel.app' : 'http://localhost:3000';
+const API = 'https://dog-grooming-module-apms.vercel.app';
 const TOKEN_KEY = 'crm_token';
 const USER_KEY = 'crm_user';
 

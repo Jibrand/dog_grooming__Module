@@ -45,7 +45,7 @@ export default function ChatbotWidget() {
     const payloadMessage = userMessage + contextStr;
 
     try {
-      const API = import.meta.env.PROD ? 'https://dog-grooming-module-apms.vercel.app' : 'http://localhost:3000';
+      const API = 'https://dog-grooming-module-apms.vercel.app';
       const response = await fetch(`${API}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

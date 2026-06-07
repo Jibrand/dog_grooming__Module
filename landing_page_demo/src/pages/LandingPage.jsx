@@ -27,7 +27,7 @@ export default function LandingPage() {
           subdomain = 'cliniclocal';
         }
         
-        const API = import.meta.env.PROD ? 'https://dog-grooming-module-apms.vercel.app' : 'http://localhost:3000';
+        const API = 'https://dog-grooming-module-apms.vercel.app';
         const res = await fetch(`${API}/api/clinic/public/${subdomain}`);
         const json = await res.json();
         

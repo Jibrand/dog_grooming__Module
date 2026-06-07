@@ -22,7 +22,7 @@ const Login = () => {
                 if (subdomain === 'localhost' || subdomain === '127') {
                     subdomain = 'cliniclocal';
                 }
-                const API = import.meta.env.PROD ? 'https://dog-grooming-module-apms.vercel.app' : 'http://localhost:3000';
+                const API = 'https://dog-grooming-module-apms.vercel.app';
                 const res = await fetch(`${API}/api/clinic/public/${subdomain}`);
                 const data = await res.json();
                 if (data.success && data.data) {

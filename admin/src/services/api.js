@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = import.meta.env.PROD 
-  ? 'https://dog-grooming-module-apms.vercel.app' 
-  : 'http://localhost:3000';
+const BASE_URL = 'https://dog-grooming-module-apms.vercel.app';
 
 const API = axios.create({ baseURL: `${BASE_URL}/api/clinic` });
 
