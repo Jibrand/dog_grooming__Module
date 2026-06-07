@@ -23,7 +23,7 @@ export default function QuickAppointment({ clinic }) {
     }
 
     try {
-      const API = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? 'https://veterinary-clinics-futureframe-back.vercel.app' : 'http://localhost:3000');
+      const API = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? 'https://dog-grooming-module-apms.vercel.app' : 'http://localhost:3000');
       const res = await fetch(`${API}/api/appointments/available-slots?date=${date}&subdomain=${subdomain}`);
       const data = await res.json();
       if (res.ok && data.success) {
@@ -53,7 +53,7 @@ export default function QuickAppointment({ clinic }) {
     }
 
     try {
-      const API = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? 'https://veterinary-clinics-futureframe-back.vercel.app' : 'http://localhost:3000');
+      const API = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? 'https://dog-grooming-module-apms.vercel.app' : 'http://localhost:3000');
       const res = await fetch(`${API}/api/appointments/book`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

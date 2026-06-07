@@ -25,3 +25,4 @@ build
 # Prisma
 prisma/*.db
 prisma/*.db-journal
+brightsmile-Key.json
