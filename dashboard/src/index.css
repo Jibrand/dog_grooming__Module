@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #000000;
+    --border: #eef0f2;
+    --muted: #f9fafb;
+    --muted-foreground: #6b7280;
+    --accent: #111827;
+  }
+
+  body {
+    @apply bg-white text-black;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.011em;
+  }
+
+  * {
+    @apply border-gray-100;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-black tracking-tight;
+    font-weight: 400 !important;
+  }
+}
+
+@layer components {
+  .apple-card {
+    @apply bg-white border border-[#ececef] rounded-[24px] p-8 transition-all duration-300;
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.02), 0 2px 8px -1px rgba(0, 0, 0, 0.02);
+  }
+
+  .apple-card:hover {
+    box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.04), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+  }
+
+  .sidebar-item {
+    @apply flex items-center gap-3 px-5 py-3.5 rounded-2xl text-[14px] text-[#444] transition-all duration-200 cursor-pointer font-medium;
+  }
+
+  .sidebar-item:hover {
+    @apply bg-gray-50 text-black;
+  }
+
+  .sidebar-item.active {
+    @apply bg-black text-white shadow-xl shadow-black/10;
+  }
+
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20;
+  }
+
+  /* Custom Scrollbar - HCI Optimized */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-200/80 rounded-full hover:bg-gray-300 transition-colors;
+  }
+}
+
+/* Typography Hierarchy - Scaled Up */
+h1 {
+  @apply text-4xl font-semibold tracking-tight text-black;
+}
+
+h2 {
+  @apply text-2xl font-semibold tracking-tight text-black;
+}
+
+h3 {
+  @apply text-lg font-semibold tracking-tight text-black;
+}
+
+h4 {
+  @apply text-base font-semibold tracking-tight text-black;
+}
+
+.text-subheading {
+  @apply text-lg font-semibold text-[#1a1a1a] mb-6;
+}
+
+.text-muted {
+  @apply text-[#555] font-normal;
+}
+
+.text-very-muted {
+  @apply text-[#888] font-normal;
+}
+
+/* ── Custom slim scrollbar ─────────────────────────────────────────────── */
+.custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 99px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}

@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Clinic {
+  id                 String   @id @default(uuid())
+  name               String
+  subdomain          String   @unique
+  phone              String?
+  email              String?
+  location           String?
+  logoUrl            String?
+  happyPetsTreated   Int?      @default(0)
+  expertSpecialists  Int?      @default(0)
+  yearsExperience    Int?      @default(0)
+  services           Json?
+  testimonials       Json?
+  users              User[]
+  appointments Appointment[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  id           String        @id @default(uuid())
+  clinicId     String
+  clinic       Clinic        @relation(fields: [clinicId], references: [id], onDelete: Cascade)
+  name         String
+  email        String?
+  phone        String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  appointments Appointment[]
+  @@unique([phone, clinicId])
+}
+
+model Appointment {
+  id                 String   @id @default(uuid())
+  clinicId           String
+  clinic             Clinic   @relation(fields: [clinicId], references: [id], onDelete: Cascade)
+  userId             String
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  petName            String?
+  species            String?
+  reason             String
+  appointmentDate    String   // Format YYYY-MM-DD
+  appointmentTime    String   // Format HH:MM
+  status             String   @default("SCHEDULED") // SCHEDULED | CONFIRMED | CANCELLED | COMPLETED
+  googleEventId      String?
+  googleMeetLink     String?
+  cancellationReason String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model ClinicSettings {
+  id         String   @id @default(uuid())
+  clinicName String
+  address    String
+  phone      String
+  timezone   String   @default("Asia/Karachi")
+}
+
+model Admin {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ChatSession {
+  id        String        @id @default(uuid())
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  messages  ChatMessage[]
+}
+
+model ChatMessage {
+  id            String      @id @default(uuid())
+  sessionId     String
+  session       ChatSession @relation(fields: [sessionId], references: [id])
+  role          String      // "user" or "model"
+  content       String      @db.Text
+  functionCall  String?     @db.Text // Store JSON of function call if applicable
+  createdAt     DateTime    @default(now())
+}

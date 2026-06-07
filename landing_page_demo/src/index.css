@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased font-sans;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/20;
+  }
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-xl border border-white/50 shadow-premium;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-amber-500;
+  }
+  
+  /* Scale up containers ONLY for ultra-wide monitors */
+  @media (min-width: 1536px) {
+    .max-w-7xl {
+      max-width: 1400px !important;
+    }
+  }
+  @media (min-width: 1920px) {
+    .max-w-7xl {
+      max-width: 1600px !important;
+    }
+  }
+}
